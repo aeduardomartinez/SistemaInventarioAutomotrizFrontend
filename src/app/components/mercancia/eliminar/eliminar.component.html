@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <h2>Eliminar Mercancía</h2>
+  <p><strong>Producto:</strong> {{ mercancia?.nombreProducto }}</p>
+  <p><strong>Cantidad:</strong> {{ mercancia?.cantidad }}</p>
+
+  <div class="mb-3">
+    <label for="usuario" class="form-label">Seleccionar Usuario</label>
+    <select [(ngModel)]="idUsuarioSeleccionado" name="usuario" class="form-select">
+      <option [value]="0">-- Selecciona un usuario --</option>
+      <option *ngFor="let usuario of usuarios" [value]="usuario.id">
+        {{ usuario.nombre }}
+      </option>
+    </select>
+  </div>
+
+  <button class="btn btn-danger" (click)="eliminar()">🗑️ Eliminar</button>
+  <a routerLink="/listar" class="btn btn-secondary ms-2">Cancelar</a>
+
+  <div *ngIf="mensajeExito" class="alert alert-success mt-3">
+    {{ mensajeExito }}
+  </div>
+
+  <div *ngIf="mensajeError" class="alert alert-danger mt-3">
+    {{ mensajeError }}
+  </div>
+</div>

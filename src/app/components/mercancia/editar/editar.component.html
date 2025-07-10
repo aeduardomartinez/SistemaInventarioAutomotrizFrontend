@@ -1,0 +1,41 @@
+<h3>Editar Mercancía</h3>
+<div class="form">
+  <form (ngSubmit)="guardarCambios()" #formulario="ngForm">
+    <label for="fname">Nombre del producto</label>
+    <input type="text" [(ngModel)]="mercancia.nombreProducto" name="nombreProducto"
+      placeholder="Difite el nombre del producto.">
+
+    <label for="lname">Cantidad</label>
+    <input type="number" [(ngModel)]="mercancia.cantidad" name="cantidad" required placeholder="Digite una cantidad."
+      (keypress)="soloEnteros($event)" min="0" step="1">
+
+    <label for="lname">Fecha de ingreso:</label>
+    <input type="date" [(ngModel)]="mercancia.fechaIngreso" name="Fecha ingreso" readonly>
+
+    <label>Selecciona usuario que registra:</label>
+    <select id="usuarioModifico" class="form-control" [(ngModel)]="idUsuarioModifico" name="idUsuarioModifico" required>
+      <option value="">-- Selecciona un usuario --</option>
+      <option *ngFor="let usuario of usuarios" [value]="usuario.id">
+        {{ usuario.nombre }}
+      </option>
+
+    </select>
+
+    <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">
+      Guardar Cambios
+    </button>
+
+    <button type="button" class="btn btn-secondary ms-2" routerLink="/listar">
+      Cancelar
+    </button>
+  </form>
+  <div *ngIf="mensajeError" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error:</strong> {{ mensajeError }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div *ngIf="mensajeAprobado" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Éxito:</strong> {{ mensajeAprobado }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<h3>Registrar Usuario</h3>
+
+<<div class="form">
+  <form (ngSubmit)="registrarUsuario()">
+    <label for="fname">Nombre del producto</label>
+    <input type="text" [(ngModel)]="usuario.nombre" name="nombreProducto" placeholder="Difite el nombre del producto.">
+
+    <label for="lname">Edad</label>
+    <input type="number" [(ngModel)]="usuario.edad" name="edad" required (keypress)="soloEnteros($event)" min="1"
+      step="1">
+    <label>Cargo:</label>
+    <select [(ngModel)]="usuario.idCargo" name="cargoId" required>
+      <option value="">-- Selecciona un Cargo --</option>
+      <option *ngFor="let cargo of cargos" [value]="cargo.id">
+        {{ cargo.nombre }}
+      </option>
+    </select>
+    <label for="lname">Fecha de ingreso:</label>
+    <input type="date" [(ngModel)]="usuario.fechaIngreso" name="Fecha ingreso" required [max]="fechaMaxima">
+    <input type="submit" value="Registrar">
+  </form>
+  </div>
+
+  <div *ngIf="mensajeError" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error:</strong> {{ mensajeError }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div *ngIf="mensajeAprobado" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Éxito:</strong> {{ mensajeAprobado }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>

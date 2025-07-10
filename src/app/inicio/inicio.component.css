@@ -1,0 +1,13 @@
+img {
+  display: block;
+  margin: 50px auto;
+  max-width: 190%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.8s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
