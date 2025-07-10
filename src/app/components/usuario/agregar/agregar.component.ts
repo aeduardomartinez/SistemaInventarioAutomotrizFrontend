@@ -34,7 +34,13 @@ export class AgregarComponent implements OnInit {
 
   ngOnInit(): void {
 
+    const hoy = new Date();
+    const año = hoy.getFullYear();
+    const mes = (hoy.getMonth() + 1).toString().padStart(2, '0');
+    const dia = hoy.getDate().toString().padStart(2, '0');
+    this.fechaMaxima = `${año}-${mes}-${dia}`;
     this.cargoService.listar().subscribe({
+
       next: (data) => {
         console.log('Cargos recibidos:', data);
         this.cargos = data;
@@ -49,12 +55,6 @@ export class AgregarComponent implements OnInit {
   constructor(private usuarioService: UsuarioService, private cargoService: CargoService, private router: Router) { }
 
   registrarUsuario() {
-
-    const hoy = new Date();
-    const año = hoy.getFullYear();
-    const mes = (hoy.getMonth() + 1).toString().padStart(2, '0');
-    const dia = hoy.getDate().toString().padStart(2, '0');
-    this.fechaMaxima = `${año}-${mes}-${dia}`;
 
     this.usuarioService.crearUsuario(this.usuario).subscribe({
       next: (resp) => {

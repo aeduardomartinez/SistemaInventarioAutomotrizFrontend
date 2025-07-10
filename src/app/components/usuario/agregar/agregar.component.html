@@ -2,8 +2,8 @@
 
 <<div class="form">
   <form (ngSubmit)="registrarUsuario()">
-    <label for="fname">Nombre del producto</label>
-    <input type="text" [(ngModel)]="usuario.nombre" name="nombreProducto" placeholder="Difite el nombre del producto.">
+    <label for="fname">Nombre del usuario</label>
+    <input type="text" [(ngModel)]="usuario.nombre" name="nombreProducto" placeholder="Digite el nombre del producto.">
 
     <label for="lname">Edad</label>
     <input type="number" [(ngModel)]="usuario.edad" name="edad" required (keypress)="soloEnteros($event)" min="1"

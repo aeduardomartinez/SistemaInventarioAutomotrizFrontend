@@ -3,7 +3,7 @@
   <form (ngSubmit)="guardarCambios()" #formulario="ngForm">
     <label for="fname">Nombre del producto</label>
     <input type="text" [(ngModel)]="mercancia.nombreProducto" name="nombreProducto"
-      placeholder="Difite el nombre del producto.">
+      placeholder="Digite el nombre del producto.">
 
     <label for="lname">Cantidad</label>
     <input type="number" [(ngModel)]="mercancia.cantidad" name="cantidad" required placeholder="Digite una cantidad."
